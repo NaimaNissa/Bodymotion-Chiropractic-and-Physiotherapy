@@ -33,21 +33,21 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
             When it comes to your health, it&apos;s all connected
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-3 sm:mb-4 px-4">
             We&apos;ve brought together a multidisciplinary team of clinicians to offer breadth and depth of expertise. We apply our experience of working with elite sports teams and individuals to everybody, because if there&apos;s one thing we stand by, it&apos;s that you don&apos;t have to be an athlete to be treated like one.
           </p>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4">
             Whatever you are dealing with, it is not an isolated issue and, therefore, it should not be dealt with in isolation. This is why we look at the complete picture, starting with a correct diagnosis to lead us to the right treatment that your body needs. From here, we&apos;ll build your tailored team around you to get you back to your best, doing the things you love and performing optimally whilst helping you prevent a recurrence or any future issues.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (

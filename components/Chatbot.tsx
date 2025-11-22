@@ -161,20 +161,21 @@ export default function Chatbot() {
     <>
       {/* Chatbot Button - Pure Sports Medicine Style */}
       {!isOpen && (
-        <div className="fixed bottom-6 right-6 z-50">
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
           <button
             onClick={() => setIsOpen(true)}
-            className="bg-primary-700 hover:bg-primary-800 text-white px-6 py-3 rounded-full shadow-2xl transition flex items-center gap-2 font-medium"
+            className="bg-primary-700 hover:bg-primary-800 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full shadow-2xl transition flex items-center gap-2 font-medium text-sm sm:text-base"
           >
-            <MessageCircle size={20} />
-            <span>Need some help?</span>
+            <MessageCircle size={18} className="sm:w-5 sm:h-5" />
+            <span className="hidden sm:inline">Need some help?</span>
+            <span className="sm:hidden">Help</span>
           </button>
         </div>
       )}
 
       {/* Chatbot Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-96 h-[600px] bg-white rounded-lg shadow-2xl flex flex-col z-50 border border-gray-200">
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 h-[calc(100vh-8rem)] sm:h-[600px] max-h-[600px] bg-white rounded-lg shadow-2xl flex flex-col z-50 border border-gray-200">
           {/* Header */}
           <div className="bg-primary-600 text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center gap-2">

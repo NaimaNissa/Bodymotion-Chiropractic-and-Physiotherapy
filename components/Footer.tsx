@@ -30,13 +30,13 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       {/* Insurance Providers Bar */}
-      <div className="bg-primary-800 py-6">
+      <div className="bg-primary-800 py-4 sm:py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-8">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8">
             {insuranceProviders.map((provider, index) => (
               <div
                 key={index}
-                className="text-white/80 font-semibold text-sm hover:text-white transition"
+                className="text-white/80 font-semibold text-xs sm:text-sm hover:text-white transition"
               >
                 {provider}
               </div>
@@ -46,8 +46,8 @@ export default function Footer() {
       </div>
 
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           <div>
             <Image
               src="/logo.png"
@@ -56,7 +56,7 @@ export default function Footer() {
               height={40}
               className="h-10 w-auto mb-4 brightness-0 invert"
             />
-            <p className="mb-4 text-gray-400">
+            <p className="mb-4 text-gray-400 text-sm sm:text-base">
               Elite care for everybody. Expert chiropractic and physiotherapy
               services to help you live an active and healthy life.
             </p>

@@ -84,27 +84,27 @@ export default function BookingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50 py-6 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <Link
             href="/"
-            className="text-primary-600 hover:text-primary-700 mb-4 inline-block"
+            className="text-primary-600 hover:text-primary-700 mb-3 sm:mb-4 inline-block text-sm sm:text-base"
           >
             ← Back to Home
           </Link>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
             Find Your Practitioner
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600">
             Book an appointment with our expert team
           </p>
         </div>
 
         {/* Search and Filter */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <div className="grid md:grid-cols-2 gap-4">
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6 sm:mb-8">
+          <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
@@ -112,7 +112,7 @@ export default function BookingPage() {
                 placeholder="Search by name or specialty..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm sm:text-base"
               />
             </div>
             <div className="relative">
@@ -120,7 +120,7 @@ export default function BookingPage() {
               <select
                 value={selectedSpecialty}
                 onChange={(e) => setSelectedSpecialty(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent appearance-none bg-white"
+                className="w-full pl-10 pr-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent appearance-none bg-white text-sm sm:text-base"
               >
                 {specialties.map((specialty) => (
                   <option key={specialty} value={specialty}>
@@ -156,12 +156,12 @@ export default function BookingPage() {
 
                   {/* Practitioner Info */}
                   <div className="flex-grow">
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
                           {practitioner.name}
                         </h3>
-                        <div className="flex items-center gap-4 text-gray-600 mb-2">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-gray-600 mb-2 text-sm sm:text-base">
                           <span className="flex items-center gap-1">
                             <MapPin size={16} />
                             {practitioner.location}
@@ -203,9 +203,9 @@ export default function BookingPage() {
                     {/* Book Button */}
                     <button
                       onClick={() => handleBookAppointment(practitioner.id)}
-                      className="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition font-semibold flex items-center gap-2"
+                      className="bg-primary-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-primary-700 transition font-semibold flex items-center justify-center gap-2 text-sm sm:text-base w-full sm:w-auto"
                     >
-                      <Calendar size={20} />
+                      <Calendar size={18} className="sm:w-5 sm:h-5" />
                       Book Appointment
                     </button>
                   </div>
@@ -216,18 +216,18 @@ export default function BookingPage() {
         </div>
 
         {/* Alternative Booking Option */}
-        <div className="mt-12 bg-primary-50 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        <div className="mt-8 sm:mt-12 bg-primary-50 rounded-lg p-6 sm:p-8 text-center">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
             Prefer to browse all available times?
           </h3>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base px-4">
             Visit our full booking system to see all available appointments
           </p>
           <a
             href="https://bodymotion.janeapp.co.uk/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-primary-600 text-white px-8 py-3 rounded-lg hover:bg-primary-700 transition font-semibold"
+            className="inline-block bg-primary-600 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-lg hover:bg-primary-700 transition font-semibold text-sm sm:text-base"
           >
             View Full Calendar
           </a>

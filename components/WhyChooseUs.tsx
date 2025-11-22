@@ -24,14 +24,14 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-12 sm:mb-16">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
               Your body is your most important investment, and it deserves more
             </h2>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
               Your body is your most important investment. Yet all too often it is not receiving the care it needs, and in most cases a lack of access is the root cause. Bodymotion is here to change that by providing the highest standards of medical care historically limited to professional athletes, so that more people can live an active and healthy life.
             </p>
           </div>
@@ -53,7 +53,7 @@ export default function WhyChooseUs() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (

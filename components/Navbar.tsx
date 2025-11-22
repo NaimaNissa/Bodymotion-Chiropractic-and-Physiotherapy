@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
     <nav className={`${navBg} fixed top-0 left-0 right-0 z-50 transition-all duration-300`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
@@ -38,7 +38,7 @@ export default function Navbar() {
                 alt="Bodymotion"
                 width={150}
                 height={40}
-                className="h-10 w-auto"
+                className="h-8 sm:h-10 w-auto"
                 priority
               />
             </Link>

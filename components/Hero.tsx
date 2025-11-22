@@ -68,20 +68,20 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 px-2">
             Elite care{" "}
-            <span className="text-secondary-300">for everybody</span>
+            <span className="text-secondary-300 block sm:inline">for everybody</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto px-4">
             You don&apos;t have to be an athlete to be treated like one.
           </p>
         </div>
 
         {/* Booking Bar */}
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-white/95 backdrop-blur-sm rounded-full p-2 shadow-2xl flex flex-col lg:flex-row items-stretch lg:items-center gap-2">
+        <div className="max-w-5xl mx-auto px-2 sm:px-4">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-full p-2 sm:p-3 shadow-2xl flex flex-col lg:flex-row items-stretch lg:items-center gap-2 sm:gap-3">
             {/* Select Service */}
             <div className="relative flex-1 w-full lg:w-auto">
               <button
@@ -90,7 +90,7 @@ export default function Hero() {
                   setShowClinicDropdown(false);
                   setShowSpecialistDropdown(false);
                 }}
-                className="w-full flex items-center gap-3 px-6 py-4 text-left hover:bg-gray-50 rounded-full transition"
+                className="w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 text-left hover:bg-gray-50 rounded-xl sm:rounded-full transition text-sm sm:text-base"
               >
                 <Stethoscope size={20} className="text-primary-600 flex-shrink-0" />
                 <span className="flex-1 text-gray-700 font-medium">
@@ -115,7 +115,7 @@ export default function Hero() {
               )}
             </div>
 
-            <Plus size={24} className="text-gray-400 hidden lg:block flex-shrink-0" />
+            <Plus size={20} className="text-gray-400 hidden lg:block flex-shrink-0" />
 
             {/* Select Clinic */}
             <div className="relative flex-1 w-full lg:w-auto">
@@ -125,7 +125,7 @@ export default function Hero() {
                   setShowServiceDropdown(false);
                   setShowSpecialistDropdown(false);
                 }}
-                className="w-full flex items-center gap-3 px-6 py-4 text-left hover:bg-gray-50 rounded-full transition"
+                className="w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 text-left hover:bg-gray-50 rounded-xl sm:rounded-full transition text-sm sm:text-base"
               >
                 <MapPin size={20} className="text-primary-600 flex-shrink-0" />
                 <span className="flex-1 text-gray-700 font-medium">
@@ -150,7 +150,7 @@ export default function Hero() {
               )}
             </div>
 
-            <Plus size={24} className="text-gray-400 hidden lg:block flex-shrink-0" />
+            <Plus size={20} className="text-gray-400 hidden lg:block flex-shrink-0" />
 
             {/* Select Specialist */}
             <div className="relative flex-1 w-full lg:w-auto">
@@ -160,7 +160,7 @@ export default function Hero() {
                   setShowServiceDropdown(false);
                   setShowClinicDropdown(false);
                 }}
-                className="w-full flex items-center gap-3 px-6 py-4 text-left hover:bg-gray-50 rounded-full transition"
+                className="w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 text-left hover:bg-gray-50 rounded-xl sm:rounded-full transition text-sm sm:text-base"
               >
                 <User size={20} className="text-primary-600 flex-shrink-0" />
                 <span className="flex-1 text-gray-700 font-medium">
@@ -188,7 +188,7 @@ export default function Hero() {
             {/* Book Button */}
             <button
               onClick={handleBook}
-              className="w-full lg:w-auto bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-semibold transition flex items-center justify-center gap-2 shadow-lg flex-shrink-0"
+              className="w-full lg:w-auto bg-primary-600 hover:bg-primary-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-full font-semibold transition flex items-center justify-center gap-2 shadow-lg flex-shrink-0 text-sm sm:text-base"
             >
               <Calendar size={20} />
               Book

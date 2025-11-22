@@ -37,13 +37,13 @@ const faqs = [
 
 export default function Insurance() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
             Your health, covered
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             We&apos;re covered by all major private medical insurers. Take a look at
             our FAQs to find all the help you need when it comes to making a
             claim.
@@ -51,11 +51,11 @@ export default function Insurance() {
         </div>
 
         {/* Insurance Logos */}
-        <div className="flex flex-wrap items-center justify-center gap-8 mb-16">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16">
           {insuranceProviders.map((provider, index) => (
             <div
               key={index}
-              className="px-6 py-3 bg-gray-100 rounded-lg text-gray-700 font-semibold hover:bg-primary-50 hover:text-primary-600 transition"
+              className="px-4 py-2 sm:px-6 sm:py-3 bg-gray-100 rounded-lg text-gray-700 font-semibold hover:bg-primary-50 hover:text-primary-600 transition text-sm sm:text-base"
             >
               {provider}
             </div>
