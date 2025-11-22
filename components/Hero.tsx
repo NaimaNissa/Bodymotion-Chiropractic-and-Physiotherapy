@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Stethoscope, MapPin, User, Plus, Calendar } from "lucide-react";
 
 const services = [
@@ -28,6 +29,7 @@ const specialists = [
 ];
 
 export default function Hero() {
+  const router = useRouter();
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [selectedClinic, setSelectedClinic] = useState<string | null>(null);
   const [selectedSpecialist, setSelectedSpecialist] = useState<string | null>(null);
@@ -36,15 +38,14 @@ export default function Hero() {
   const [showSpecialistDropdown, setShowSpecialistDropdown] = useState(false);
 
   const handleBook = () => {
+    // Navigate to booking page with selected options as URL parameters
     const params = new URLSearchParams();
     if (selectedService) params.append("service", selectedService);
     if (selectedClinic) params.append("clinic", selectedClinic);
     if (selectedSpecialist) params.append("specialist", selectedSpecialist);
     
-    window.open(
-      `https://bodymotion.janeapp.co.uk/online-booking?${params.toString()}`,
-      "_blank"
-    );
+    const queryString = params.toString();
+    router.push(`/book${queryString ? `?${queryString}` : ""}`);
   };
 
   return (
@@ -81,7 +82,7 @@ export default function Hero() {
 
         {/* Booking Bar */}
         <div className="max-w-5xl mx-auto px-2 sm:px-4">
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-full p-2 sm:p-3 shadow-2xl flex flex-col lg:flex-row items-stretch lg:items-center gap-2 sm:gap-3">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-full p-2 sm:p-3 shadow-2xl flex flex-col lg:flex-row items-stretch lg:items-center gap-2 sm:gap-3 relative z-50">
             {/* Select Service */}
             <div className="relative flex-1 w-full lg:w-auto">
               <button
@@ -187,8 +188,11 @@ export default function Hero() {
 
             {/* Book Button */}
             <button
-              onClick={handleBook}
-              className="w-full lg:w-auto bg-primary-600 hover:bg-primary-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-full font-semibold transition flex items-center justify-center gap-2 shadow-lg flex-shrink-0 text-sm sm:text-base"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleBook();
+              }}
+              className="w-full lg:w-auto bg-primary-600 hover:bg-primary-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-full font-semibold transition flex items-center justify-center gap-2 shadow-lg flex-shrink-0 text-sm sm:text-base z-50 relative"
             >
               <Calendar size={20} />
               Book
@@ -201,7 +205,11 @@ export default function Hero() {
       {(showServiceDropdown || showClinicDropdown || showSpecialistDropdown) && (
         <div
           className="fixed inset-0 z-40"
-          onClick={() => {
+          onClick={(e) => {
+            // Don't close if clicking on the booking bar
+            if ((e.target as HTMLElement).closest('.bg-white\\/95')) {
+              return;
+            }
             setShowServiceDropdown(false);
             setShowClinicDropdown(false);
             setShowSpecialistDropdown(false);

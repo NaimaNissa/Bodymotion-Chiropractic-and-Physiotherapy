@@ -49,13 +49,16 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           <div>
-            <Image
-              src="/logo.png"
-              alt="Bodymotion"
-              width={150}
-              height={40}
-              className="h-10 w-auto mb-4 brightness-0 invert"
-            />
+            <Link href="/" className="inline-block mb-4 bg-white p-2 rounded-lg">
+              <Image
+                src="/logo.png"
+                alt="Bodymotion"
+                width={150}
+                height={40}
+                className="h-10 sm:h-12 w-auto hover:opacity-80 transition-opacity"
+                priority
+              />
+            </Link>
             <p className="mb-4 text-gray-400 text-sm sm:text-base">
               Elite care for everybody. Expert chiropractic and physiotherapy
               services to help you live an active and healthy life.
@@ -75,7 +78,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2 text-gray-400">
                 <MapPin size={16} />
-                <span>London, UK</span>
+                <span>123 Health Street, London WC1A 1AA</span>
               </div>
             </div>
           </div>

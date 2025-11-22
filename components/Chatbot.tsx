@@ -116,12 +116,10 @@ export default function Chatbot() {
       return;
     }
 
-    // Open Jane App booking
-    const serviceParam = bookingData.service
-      ? `&service=${encodeURIComponent(bookingData.service)}`
-      : "";
+    // Open Jane App booking page
+    // Jane App will handle the booking flow
     window.open(
-      `https://bodymotion.janeapp.co.uk/online-booking?name=${encodeURIComponent(bookingData.name)}&email=${encodeURIComponent(bookingData.email)}&phone=${encodeURIComponent(bookingData.phone)}${serviceParam}`,
+      `https://bodymotion.janeapp.co.uk/`,
       "_blank"
     );
 

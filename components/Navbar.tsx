@@ -106,7 +106,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Right Side - Phone & Login */}
+          {/* Right Side - Phone & Book Now */}
           <div className="hidden lg:flex items-center gap-6">
             <a
               href="tel:+442012345678"
@@ -119,7 +119,7 @@ export default function Navbar() {
               href="/book"
               className="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition font-medium"
             >
-              Login
+              Book Now
             </Link>
           </div>
 
@@ -215,7 +215,7 @@ export default function Navbar() {
               className="bg-primary-600 text-white block px-3 py-2 rounded-lg hover:bg-primary-700 transition font-medium text-center"
               onClick={() => setIsOpen(false)}
             >
-              Login
+              Book Now
             </Link>
           </div>
         </div>
