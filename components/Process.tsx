@@ -5,65 +5,70 @@ const steps = [
     number: "01",
     title: "Diagnosis",
     description:
-      "Speed and accuracy are key. Only with a correct diagnosis can you receive the care your body truly needs. We get to the heart of your issue at the very start with our experienced team of experts.",
+      "We identify the root cause of your issue through thorough assessment and expert evaluation.",
     icon: Search,
   },
   {
     number: "02",
     title: "Treatment",
     description:
-      "Tailored to you. With the right diagnosis in hand, our team of specialists collaborate on a personalised plan designed for pain relief, manage a pre-existing injury, or simply improve your overall lifestyle.",
+      "A personalized treatment plan designed specifically for your needs and recovery goals.",
     icon: ClipboardCheck,
   },
   {
     number: "03",
     title: "Performance",
     description:
-      "Your personal best is our personal best. Performance may look different to everyone, but it all comes down to improving your ability. Drawing from our broad range of specialisms, we guide you from where you are today, to where you want to be tomorrow.",
+      "We help you reach your goals, whether that&apos;s returning to sport, work, or daily activities.",
     icon: Target,
   },
   {
     number: "04",
     title: "Prevention",
     description:
-      "Lifestyle changes that last. Helping you take a proactive approach to your body is a key part of our mission. That&apos;s why we provide specific preventative care to ensure that you maintain optimal functionality, get ahead of future injuries, and continue to thrive.",
+      "Long-term strategies to prevent future injuries and maintain your health and mobility.",
     icon: Shield,
   },
 ];
 
 export default function Process() {
   return (
-    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary-700 to-primary-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
-            When it comes to your health, it&apos;s all connected
+          <h2 className="text-h2 sm:text-[36px] md:text-[40px] lg:text-[44px] font-normal text-white mb-3 sm:mb-4 px-4">
+            Your path to better health
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-3 sm:mb-4 px-4">
-            We&apos;ve brought together a multidisciplinary team of clinicians to offer breadth and depth of expertise. We apply our experience of working with elite sports teams and individuals to everybody, because if there&apos;s one thing we stand by, it&apos;s that you don&apos;t have to be an athlete to be treated like one.
-          </p>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4">
-            Whatever you are dealing with, it is not an isolated issue and, therefore, it should not be dealt with in isolation. This is why we look at the complete picture, starting with a correct diagnosis to lead us to the right treatment that your body needs. From here, we&apos;ll build your tailored team around you to get you back to your best, doing the things you love and performing optimally whilst helping you prevent a recurrence or any future issues.
+          <p className="text-body sm:text-lg text-gray-200 max-w-3xl mx-auto px-4 font-normal">
+            Our multidisciplinary approach ensures comprehensive care. We treat everyone with the same level of expertise and attention, helping you achieve your health goals.
           </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {steps.map((step, index) => {
             const Icon = step.icon;
+            const colorVariations = [
+              { bg: "bg-blue-50", icon: "bg-blue-100 text-blue-600", border: "border-blue-200" },
+              { bg: "bg-green-50", icon: "bg-green-100 text-green-600", border: "border-green-200" },
+              { bg: "bg-purple-50", icon: "bg-purple-100 text-purple-600", border: "border-purple-200" },
+              { bg: "bg-pink-50", icon: "bg-pink-100 text-pink-600", border: "border-pink-200" },
+            ];
+            const colors = colorVariations[index % colorVariations.length];
+            
             return (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 border border-gray-100 hover:shadow-lg transition-shadow"
+                className={`${colors.bg} rounded-xl p-6 border-2 ${colors.border} hover:shadow-xl transition-all duration-300`}
               >
                 <div className="mb-4">
-                  <div className="w-14 h-14 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center mb-4">
+                  <div className={`w-14 h-14 ${colors.icon} rounded-lg flex items-center justify-center mb-4`}>
                     <Icon size={28} />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-h4 font-normal text-gray-900 mb-2">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                <p className="text-gray-600 text-body text-sm leading-relaxed">{step.description}</p>
               </div>
             );
           })}

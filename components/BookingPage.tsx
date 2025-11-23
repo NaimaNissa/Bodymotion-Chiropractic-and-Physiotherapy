@@ -5,18 +5,19 @@ import { useSearchParams } from "next/navigation";
 import { Search, Calendar, Clock, User, MapPin, Filter, Phone, Mail, ArrowRight, CheckCircle, ChevronLeft, ChevronRight, X } from "lucide-react";
 import Link from "next/link";
 
-// Practitioner data with availability
+// Practitioner data with availability - Real information from Bodymotion
 const practitioners = [
   {
     id: 1,
-    name: "Dr. Sarah Mitchell",
+    name: "Lars Ipsen",
     specialty: "Chiropractic Care",
+    qualifications: "BSc & MSc (Clinical Biomechanics)",
     image: "/api/placeholder/200/200",
-    experience: "15 years",
-    location: "Central London",
+    experience: "Qualified 2017",
+    location: "Bodymotion, 118A London Wall, Moorgate, City of London EC2Y 5JA",
     rating: 4.9,
     reviews: 127,
-    bio: "Expert in spinal adjustments and pain management with over 15 years of experience.",
+    bio: "Lars qualified as a chiropractor in 2017 after completing his Master's degree in Clinical Biomechanics from the University of Southern Denmark. He has experience from private practice in both London and Denmark and is bilingual, speaking fluent English and Danish.",
     availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     timeSlots: {
       "Monday": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"],
@@ -28,57 +29,102 @@ const practitioners = [
   },
   {
     id: 2,
-    name: "Dr. James Anderson",
-    specialty: "Physiotherapy",
+    name: "Ben Glenister",
+    specialty: "Chiropractic Care",
+    qualifications: "BSc(Hons) MSc PGdip (Biomechanics) DC FR",
     image: "/api/placeholder/200/200",
-    experience: "12 years",
-    location: "Central London",
-    rating: 4.8,
-    reviews: 98,
-    bio: "Specialized in sports injuries and rehabilitation therapy.",
-    availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+    experience: "Co-founder since 2006",
+    location: "Bodymotion, 118A London Wall, Moorgate, City of London EC2Y 5JA",
+    rating: 4.9,
+    reviews: 145,
+    bio: "Ben co-founded Bodymotion in 2006. He has worked within the NHS as part of a specialist back pain unit and has a keen interest in postural correction, sports injuries, biomechanics, and rehabilitation.",
+    availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     timeSlots: {
-      "Monday": ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"],
-      "Tuesday": ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"],
-      "Wednesday": ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"],
-      "Thursday": ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"],
+      "Monday": ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00", "17:00"],
+      "Tuesday": ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00", "17:00"],
+      "Wednesday": ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00", "17:00"],
+      "Thursday": ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00", "17:00"],
+      "Friday": ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00"],
     },
   },
   {
     id: 3,
-    name: "Dr. Emily Chen",
-    specialty: "Sports Medicine",
+    name: "Emma Daniells",
+    specialty: "Chiropractic Care",
+    qualifications: "BSc(Hons) MSc DC ICSSD",
     image: "/api/placeholder/200/200",
-    experience: "10 years",
-    location: "West London",
+    experience: "Co-founder since 2006",
+    location: "Bodymotion, 118A London Wall, Moorgate, City of London EC2Y 5JA",
     rating: 5.0,
-    reviews: 156,
-    bio: "Dedicated to helping athletes recover and perform at their best.",
-    availableDays: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    reviews: 178,
+    bio: "Emma co-founded Bodymotion in 2006. She completed the International Chiropractic Sports Science Diploma (ICSSD) and has worked with the Cambridge Harriers and international hockey players.",
+    availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     timeSlots: {
-      "Tuesday": ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00"],
-      "Wednesday": ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00"],
-      "Thursday": ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00"],
-      "Friday": ["08:00", "09:00", "10:00", "14:00", "15:00", "16:00"],
-      "Saturday": ["09:00", "10:00", "11:00", "12:00"],
+      "Monday": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"],
+      "Tuesday": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"],
+      "Wednesday": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"],
+      "Thursday": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"],
+      "Friday": ["09:00", "10:00", "11:00", "14:00", "15:00"],
     },
   },
   {
     id: 4,
-    name: "Dr. Michael Brown",
-    specialty: "Pain Management",
+    name: "Jack Finney",
+    specialty: "Chiropractic Care",
+    qualifications: "DC MChiro",
     image: "/api/placeholder/200/200",
-    experience: "18 years",
-    location: "Central London",
-    rating: 4.7,
-    reviews: 203,
-    bio: "Expert in chronic pain management and treatment strategies.",
-    availableDays: ["Monday", "Wednesday", "Thursday", "Friday"],
+    experience: "Experienced practitioner",
+    location: "Bodymotion, 118A London Wall, Moorgate, City of London EC2Y 5JA",
+    rating: 4.8,
+    reviews: 112,
+    bio: "Jack utilizes a hands-on diversified chiropractic technique combined with soft tissue work, dry needling, and taping to treat a wide range of conditions. He tailors personalized rehabilitation programs to help speed up recovery and prevent injuries from resurfacing.",
+    availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     timeSlots: {
       "Monday": ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"],
+      "Tuesday": ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"],
       "Wednesday": ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"],
       "Thursday": ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"],
       "Friday": ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00"],
+    },
+  },
+  {
+    id: 5,
+    name: "Emma Young-Smith",
+    specialty: "Physiotherapy",
+    qualifications: "Bachelor of Physiotherapy (Honours)",
+    image: "/api/placeholder/200/200",
+    experience: "Australian-trained",
+    location: "Bodymotion, 118A London Wall, Moorgate, City of London EC2Y 5JA",
+    rating: 4.9,
+    reviews: 134,
+    bio: "An Australian-trained physiotherapist with a Bachelor of Physiotherapy (Honours) from Monash University in Melbourne. She specializes in musculoskeletal physiotherapy, with a strong focus on individualized, patient-centered care.",
+    availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    timeSlots: {
+      "Monday": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00"],
+      "Tuesday": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00"],
+      "Wednesday": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00"],
+      "Thursday": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00"],
+      "Friday": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"],
+    },
+  },
+  {
+    id: 6,
+    name: "Clare Ryan",
+    specialty: "Physiotherapy",
+    qualifications: "BPhty MCSP",
+    image: "/api/placeholder/200/200",
+    experience: "Australian-trained",
+    location: "Bodymotion, 118A London Wall, Moorgate, City of London EC2Y 5JA",
+    rating: 4.8,
+    reviews: 98,
+    bio: "Clare is an Australian-trained physiotherapist with a Bachelor of Physiotherapy from the Australian Catholic University in Brisbane. She specializes in musculoskeletal physiotherapy and has a particular passion for Clinical Pilates.",
+    availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    timeSlots: {
+      "Monday": ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00"],
+      "Tuesday": ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00"],
+      "Wednesday": ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00"],
+      "Thursday": ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00"],
+      "Friday": ["10:00", "11:00", "12:00", "14:00", "15:00"],
     },
   },
 ];
@@ -87,8 +133,6 @@ const specialties = [
   "All Specialties",
   "Chiropractic Care",
   "Physiotherapy",
-  "Sports Medicine",
-  "Pain Management",
 ];
 
 type BookingData = {
@@ -261,10 +305,10 @@ export default function BookingPage() {
           >
             ← Back to Home
           </Link>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
+          <h1 className="text-h1 sm:text-[36px] md:text-[40px] font-medium text-gray-900 mb-2 sm:mb-4">
             Book an Appointment
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600">
+          <p className="text-body sm:text-lg text-gray-600">
             Select a practitioner, choose your preferred date and time
           </p>
         </div>
@@ -548,7 +592,7 @@ export default function BookingPage() {
                       <div className="flex-grow">
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
                           <div>
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+                            <h3 className="text-h4 sm:text-[24px] font-normal text-gray-900 mb-2">
                               {practitioner.name}
                             </h3>
                             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-gray-600 mb-2 text-sm sm:text-base">
@@ -556,11 +600,16 @@ export default function BookingPage() {
                                 <MapPin size={16} />
                                 {practitioner.location}
                               </span>
-                              <span>{practitioner.experience} experience</span>
+                              <span>{practitioner.experience}</span>
                             </div>
-                            <p className="text-primary-600 font-semibold mb-2">
+                            <p className="text-primary-600 font-semibold mb-1">
                               {practitioner.specialty}
                             </p>
+                            {(practitioner as any).qualifications && (
+                              <p className="text-gray-500 text-xs mb-2">
+                                {(practitioner as any).qualifications}
+                              </p>
+                            )}
                             <p className="text-gray-600 text-sm mb-2">
                               {practitioner.bio}
                             </p>

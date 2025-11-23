@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { MessageCircle, X, Send, Calendar, User, Phone, Mail } from "lucide-react";
 
 interface Message {
@@ -11,6 +12,7 @@ interface Message {
 }
 
 export default function Chatbot() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -116,16 +118,19 @@ export default function Chatbot() {
       return;
     }
 
-    // Open Jane App booking page
-    // Jane App will handle the booking flow
-    window.open(
-      `https://bodymotion.janeapp.co.uk/`,
-      "_blank"
-    );
+    // Navigate to booking page with form data
+    const params = new URLSearchParams();
+    if (bookingData.name) params.append("name", bookingData.name);
+    if (bookingData.email) params.append("email", bookingData.email);
+    if (bookingData.phone) params.append("phone", bookingData.phone);
+    if (bookingData.service) params.append("service", bookingData.service);
+
+    const queryString = params.toString();
+    router.push(`/book${queryString ? `?${queryString}` : ""}`);
 
     const successMessage: Message = {
       id: messages.length + 1,
-      text: `Perfect! I've opened the booking page for you. Please complete your appointment booking there. Is there anything else I can help you with?`,
+      text: `Perfect! I'm taking you to our booking page where you can select a practitioner and choose your preferred date and time. Is there anything else I can help you with?`,
       sender: "bot",
       timestamp: new Date(),
     };
@@ -257,7 +262,7 @@ export default function Chatbot() {
                         setBookingData({ ...bookingData, phone: e.target.value })
                       }
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
-                      placeholder="+44 20 1234 5678"
+                      placeholder="+44 20 7374 2272"
                     />
                   </div>
                   <div>

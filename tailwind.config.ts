@@ -8,19 +8,31 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'],
+      },
+      fontSize: {
+        'h1': ['48px', { lineHeight: '1.1', fontWeight: '400' }], // Hero headings - large and bold
+        'h2': ['40px', { lineHeight: '1.2', fontWeight: '400' }], // Section headings
+        'h3': ['32px', { lineHeight: '1.3', fontWeight: '400' }], // Subsection headings
+        'h4': ['24px', { lineHeight: '1.4', fontWeight: '400' }], // Card titles
+        'h5': ['20px', { lineHeight: '1.4', fontWeight: '400' }], // Small headings
+        'h6': ['18px', { lineHeight: '1.5', fontWeight: '400' }], // Smallest headings
+        'body': ['16px', { lineHeight: '1.6', fontWeight: '400' }], // Body text - matches Pure Sports Medicine
+      },
       colors: {
         primary: {
-          // Light blue from logo (body text and icon)
-          50: '#e6f4fd',
-          100: '#cce9fb',
-          200: '#99d3f7',
-          300: '#66bdf3',
-          400: '#33a7ef',
-          500: '#0091eb', // Main light blue
-          600: '#0074bc',
-          700: '#00578d',
-          800: '#003a5e',
-          900: '#001d2f',
+          // Blue gradient palette from darkest to lightest
+          50: '#e6f2ff',   // Very light pastel blue (far right)
+          100: '#b3d9ff',  // Light sky blue (fourth stripe)
+          200: '#4da6ff',  // Medium royal blue (middle stripe)
+          300: '#0066cc',  // Dark muted blue (second stripe)
+          400: '#003366',  // Very dark navy (far left)
+          500: '#0066cc', // Main medium blue
+          600: '#0052a3',
+          700: '#003d7a',
+          800: '#002952',
+          900: '#001429', // Darkest navy
         },
         secondary: {
           // Teal/darker blue from logo (motion text)

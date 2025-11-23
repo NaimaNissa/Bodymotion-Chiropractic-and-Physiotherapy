@@ -28,7 +28,7 @@ const insuranceProviders = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-primary-900 text-gray-300">
       {/* Insurance Providers Bar */}
       <div className="bg-primary-800 py-4 sm:py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,9 +53,9 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="Bodymotion"
-                width={150}
-                height={40}
-                className="h-10 sm:h-12 w-auto hover:opacity-80 transition-opacity"
+                width={200}
+                height={60}
+                className="h-14 sm:h-16 md:h-18 w-auto hover:opacity-80 transition-opacity"
                 priority
               />
             </Link>
@@ -64,21 +64,21 @@ export default function Footer() {
               services to help you live an active and healthy life.
             </p>
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-gray-400">
-                <Phone size={16} />
-                <a href="tel:+442012345678" className="hover:text-white">
-                  +44 20 1234 5678
-                </a>
-              </div>
-              <div className="flex items-center gap-2 text-gray-400">
-                <Mail size={16} />
-                <a href="mailto:info@bodymotion.co.uk" className="hover:text-white">
-                  info@bodymotion.co.uk
-                </a>
-              </div>
+                  <div className="flex items-center gap-2 text-gray-400">
+                    <Phone size={16} />
+                    <a href="tel:+442073742272" className="hover:text-white">
+                      +44 20 7374 2272
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-400">
+                    <Mail size={16} />
+                    <a href="mailto:receptionist@body-motion.co.uk" className="hover:text-white">
+                      receptionist@body-motion.co.uk
+                    </a>
+                  </div>
               <div className="flex items-center gap-2 text-gray-400">
                 <MapPin size={16} />
-                <span>123 Health Street, London WC1A 1AA</span>
+                <span>118A London Wall, Moorgate, City of London EC2Y 5JA, United Kingdom</span>
               </div>
             </div>
           </div>

@@ -29,16 +29,16 @@ export default function Navbar() {
   return (
     <nav className={`${navBg} fixed top-0 left-0 right-0 z-50 transition-all duration-300`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 sm:h-20">
+        <div className="flex justify-between items-center h-20 sm:h-24 md:h-28">
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="Bodymotion"
-                width={150}
-                height={40}
-                className="h-8 sm:h-10 w-auto"
+                width={200}
+                height={60}
+                className="h-12 sm:h-14 md:h-16 w-auto"
                 priority
               />
             </Link>
@@ -108,13 +108,13 @@ export default function Navbar() {
 
           {/* Right Side - Phone & Book Now */}
           <div className="hidden lg:flex items-center gap-6">
-            <a
-              href="tel:+442012345678"
-              className={`${navText} flex items-center gap-2 hover:text-primary-600 transition`}
-            >
-              <Phone size={18} />
-              <span className="font-medium">+44 20 1234 5678</span>
-            </a>
+                <a
+                  href="tel:+442073742272"
+                  className={`${navText} flex items-center gap-2 hover:text-primary-600 transition`}
+                >
+                  <Phone size={18} />
+                  <span className="font-medium">+44 20 7374 2272</span>
+                </a>
             <Link
               href="/book"
               className="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition font-medium"
@@ -202,14 +202,14 @@ export default function Navbar() {
             >
               Contact Us
             </Link>
-            <a
-              href="tel:+442012345678"
-              className="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              <Phone size={18} className="inline mr-2" />
-              +44 20 1234 5678
-            </a>
+                <a
+                  href="tel:+442073742272"
+                  className="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Phone size={18} className="inline mr-2" />
+                  +44 20 7374 2272
+                </a>
             <Link
               href="/book"
               className="bg-primary-600 text-white block px-3 py-2 rounded-lg hover:bg-primary-700 transition font-medium text-center"

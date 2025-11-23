@@ -5,22 +5,28 @@ const stats = [
     number: "9",
     label: "Prime Locations",
     icon: MapPin,
+    bgColor: "bg-white",
+    iconColor: "text-primary-700",
   },
   {
     number: "120+",
     label: "World-class Specialists",
     icon: Users,
+    bgColor: "bg-green-50",
+    iconColor: "text-primary-700",
   },
   {
     number: "20+",
     label: "Years of Experience",
     icon: Award,
+    bgColor: "bg-blue-50",
+    iconColor: "text-primary-700",
   },
 ];
 
 export default function Stats() {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary-50 to-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary-800 to-primary-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
           {stats.map((stat, index) => {
@@ -28,15 +34,20 @@ export default function Stats() {
             return (
               <div
                 key={index}
-                className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow"
+                className={`relative ${stat.bgColor} rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300`}
               >
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                  <Icon size={24} className="sm:w-8 sm:h-8" />
+                {/* Icon in top right corner */}
+                <div className={`absolute top-4 right-4 ${stat.iconColor}`}>
+                  <Icon size={28} className="sm:w-8 sm:h-8" />
                 </div>
-                <div className="text-4xl sm:text-5xl font-bold text-primary-600 mb-2">
+                
+                {/* Number */}
+                <div className="text-5xl sm:text-6xl md:text-7xl font-bold text-primary-700 mb-3">
                   {stat.number}
                 </div>
-                <div className="text-base sm:text-lg md:text-xl text-gray-700 font-medium">
+                
+                {/* Label */}
+                <div className="text-base sm:text-lg md:text-xl text-gray-600 font-medium">
                   {stat.label}
                 </div>
               </div>

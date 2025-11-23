@@ -39,7 +39,7 @@ export default function ContactPage() {
                     href="tel:+442012345678"
                     className="text-primary-600 hover:text-primary-700"
                   >
-                    +44 20 1234 5678
+                    +44 20 7374 2272
                   </a>
                   <p className="text-sm text-gray-600 mt-1">
                     Monday - Friday, 7am - 8pm
@@ -54,10 +54,10 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
                   <a
-                    href="mailto:info@bodymotion.co.uk"
+                    href="mailto:receptionist@body-motion.co.uk"
                     className="text-primary-600 hover:text-primary-700"
                   >
-                    info@bodymotion.co.uk
+                    receptionist@body-motion.co.uk
                   </a>
                   <p className="text-sm text-gray-600 mt-1">
                     We&apos;ll respond within 24 hours
@@ -71,16 +71,16 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">
-                    Locations
+                    Location
                   </h3>
                   <p className="text-gray-700">
-                    Multiple clinics across London
+                    118A London Wall, Moorgate, City of London EC2Y 5JA, United Kingdom
                   </p>
                   <Link
                     href="/locations"
                     className="text-primary-600 hover:text-primary-700 text-sm mt-1 inline-block"
                   >
-                    View all locations →
+                    View location details →
                   </Link>
                 </div>
               </div>

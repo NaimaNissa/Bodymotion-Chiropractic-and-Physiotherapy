@@ -85,10 +85,10 @@ export default function PrivacyPolicyPage() {
               If you have questions about this Privacy Policy, please contact us
               at{" "}
               <a
-                href="mailto:info@bodymotion.co.uk"
+                href="mailto:receptionist@body-motion.co.uk"
                 className="text-primary-600 hover:text-primary-700"
               >
-                info@bodymotion.co.uk
+                receptionist@body-motion.co.uk
               </a>
             </p>
           </section>

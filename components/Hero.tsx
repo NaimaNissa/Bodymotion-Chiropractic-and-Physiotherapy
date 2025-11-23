@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Stethoscope, MapPin, User, Plus, Calendar } from "lucide-react";
+import { Stethoscope, User, Plus, Calendar } from "lucide-react";
 
 const services = [
   "Chiropractic Care",
@@ -13,35 +13,27 @@ const services = [
   "Rehabilitation",
 ];
 
-const clinics = [
-  "Central London",
-  "West London",
-  "North London",
-  "South London",
-];
-
 const specialists = [
   "All Specialists",
-  "Dr. Sarah Mitchell",
-  "Dr. James Anderson",
-  "Dr. Emily Chen",
-  "Dr. Michael Brown",
+  "Lars Ipsen",
+  "Ben Glenister",
+  "Emma Daniells",
+  "Jack Finney",
+  "Emma Young-Smith",
+  "Clare Ryan",
 ];
 
 export default function Hero() {
   const router = useRouter();
   const [selectedService, setSelectedService] = useState<string | null>(null);
-  const [selectedClinic, setSelectedClinic] = useState<string | null>(null);
   const [selectedSpecialist, setSelectedSpecialist] = useState<string | null>(null);
   const [showServiceDropdown, setShowServiceDropdown] = useState(false);
-  const [showClinicDropdown, setShowClinicDropdown] = useState(false);
   const [showSpecialistDropdown, setShowSpecialistDropdown] = useState(false);
 
   const handleBook = () => {
     // Navigate to booking page with selected options as URL parameters
     const params = new URLSearchParams();
     if (selectedService) params.append("service", selectedService);
-    if (selectedClinic) params.append("clinic", selectedClinic);
     if (selectedSpecialist) params.append("specialist", selectedSpecialist);
     
     const queryString = params.toString();
@@ -49,7 +41,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#00578d' }}>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#003d7a' }}>
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
@@ -71,11 +63,11 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
         <div className="text-center mb-8 sm:mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 px-2">
+          <h1 className="text-h1 sm:text-[56px] md:text-[64px] lg:text-[72px] xl:text-[80px] font-normal text-white mb-4 sm:mb-6 px-2 leading-tight">
             Elite care{" "}
             <span className="text-secondary-300 block sm:inline">for everybody</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto px-4">
+          <p className="text-body sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto px-4 uppercase tracking-wide font-normal">
             You don&apos;t have to be an athlete to be treated like one.
           </p>
         </div>
@@ -88,7 +80,6 @@ export default function Hero() {
               <button
                 onClick={() => {
                   setShowServiceDropdown(!showServiceDropdown);
-                  setShowClinicDropdown(false);
                   setShowSpecialistDropdown(false);
                 }}
                 className="w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 text-left hover:bg-gray-50 rounded-xl sm:rounded-full transition text-sm sm:text-base"
@@ -118,48 +109,12 @@ export default function Hero() {
 
             <Plus size={20} className="text-gray-400 hidden lg:block flex-shrink-0" />
 
-            {/* Select Clinic */}
-            <div className="relative flex-1 w-full lg:w-auto">
-              <button
-                onClick={() => {
-                  setShowClinicDropdown(!showClinicDropdown);
-                  setShowServiceDropdown(false);
-                  setShowSpecialistDropdown(false);
-                }}
-                className="w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 text-left hover:bg-gray-50 rounded-xl sm:rounded-full transition text-sm sm:text-base"
-              >
-                <MapPin size={20} className="text-primary-600 flex-shrink-0" />
-                <span className="flex-1 text-gray-700 font-medium">
-                  {selectedClinic || "Select a Clinic"}
-                </span>
-              </button>
-              {showClinicDropdown && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl z-50">
-                  {clinics.map((clinic) => (
-                    <button
-                      key={clinic}
-                      onClick={() => {
-                        setSelectedClinic(clinic);
-                        setShowClinicDropdown(false);
-                      }}
-                      className="w-full px-6 py-3 text-left hover:bg-primary-50 transition text-gray-700 first:rounded-t-2xl last:rounded-b-2xl"
-                    >
-                      {clinic}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <Plus size={20} className="text-gray-400 hidden lg:block flex-shrink-0" />
-
             {/* Select Specialist */}
             <div className="relative flex-1 w-full lg:w-auto">
               <button
                 onClick={() => {
                   setShowSpecialistDropdown(!showSpecialistDropdown);
                   setShowServiceDropdown(false);
-                  setShowClinicDropdown(false);
                 }}
                 className="w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 text-left hover:bg-gray-50 rounded-xl sm:rounded-full transition text-sm sm:text-base"
               >
@@ -202,7 +157,7 @@ export default function Hero() {
       </div>
 
       {/* Click outside to close dropdowns */}
-      {(showServiceDropdown || showClinicDropdown || showSpecialistDropdown) && (
+      {(showServiceDropdown || showSpecialistDropdown) && (
         <div
           className="fixed inset-0 z-40"
           onClick={(e) => {
@@ -211,7 +166,6 @@ export default function Hero() {
               return;
             }
             setShowServiceDropdown(false);
-            setShowClinicDropdown(false);
             setShowSpecialistDropdown(false);
           }}
         />
