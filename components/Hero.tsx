@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Stethoscope, User, Plus, Calendar } from "lucide-react";
 
@@ -29,6 +29,19 @@ export default function Hero() {
   const [selectedSpecialist, setSelectedSpecialist] = useState<string | null>(null);
   const [showServiceDropdown, setShowServiceDropdown] = useState(false);
   const [showSpecialistDropdown, setShowSpecialistDropdown] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    setIsVisible(true);
+    
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleBook = () => {
     // Navigate to booking page with selected options as URL parameters
@@ -43,38 +56,38 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#003d7a' }}>
       {/* Background Video with Overlay */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
           style={{
             filter: 'blur(2px)',
-            transform: 'scale(1.05)',
+            transform: `scale(1.05) translateY(${scrollY * 0.5}px)`,
           }}
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-700/85 via-primary-600/80 to-secondary-700/85 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-700/85 via-primary-600/80 to-secondary-700/85 z-10 animated-gradient"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
-        <div className="text-center mb-8 sm:mb-12">
+        <div className={`text-center mb-8 sm:mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-h1 sm:text-[56px] md:text-[64px] lg:text-[72px] xl:text-[80px] font-normal text-white mb-4 sm:mb-6 px-2 leading-tight">
-            Elite care{" "}
-            <span className="text-secondary-300 block sm:inline">for everybody</span>
+            <span className="text-reveal inline-block">Elite care</span>{" "}
+            <span className="text-secondary-300 block sm:inline animate-pulse-slow text-reveal stagger-1 inline-block">for everybody</span>
           </h1>
-          <p className="text-body sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto px-4 uppercase tracking-wide font-normal">
+          <p className="text-body sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto px-4 uppercase tracking-wide font-normal slide-up-fade stagger-2">
             You don&apos;t have to be an athlete to be treated like one.
           </p>
         </div>
 
         {/* Booking Bar */}
-        <div className="max-w-5xl mx-auto px-2 sm:px-4">
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-full p-2 sm:p-3 shadow-2xl flex flex-col lg:flex-row items-stretch lg:items-center gap-2 sm:gap-3 relative z-50">
+        <div className={`max-w-5xl mx-auto px-2 sm:px-4 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-full p-2 sm:p-3 shadow-2xl flex flex-col lg:flex-row items-stretch lg:items-center gap-2 sm:gap-3 relative z-50 hover-lift">
             {/* Select Service */}
             <div className="relative flex-1 w-full lg:w-auto">
               <button
@@ -82,7 +95,7 @@ export default function Hero() {
                   setShowServiceDropdown(!showServiceDropdown);
                   setShowSpecialistDropdown(false);
                 }}
-                className="w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 text-left hover:bg-gray-50 rounded-xl sm:rounded-full transition text-sm sm:text-base"
+                className="w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 text-left hover:bg-gray-50 rounded-xl sm:rounded-full transition-all duration-300 hover-scale"
               >
                 <Stethoscope size={20} className="text-primary-600 flex-shrink-0" />
                 <span className="flex-1 text-gray-700 font-medium">
@@ -98,7 +111,7 @@ export default function Hero() {
                         setSelectedService(service);
                         setShowServiceDropdown(false);
                       }}
-                      className="w-full px-6 py-3 text-left hover:bg-primary-50 transition text-gray-700 first:rounded-t-2xl last:rounded-b-2xl"
+                      className="w-full px-6 py-3 text-left hover:bg-primary-50 transition-all duration-200 hover:translate-x-2 text-gray-700 first:rounded-t-2xl last:rounded-b-2xl"
                     >
                       {service}
                     </button>
@@ -116,7 +129,7 @@ export default function Hero() {
                   setShowSpecialistDropdown(!showSpecialistDropdown);
                   setShowServiceDropdown(false);
                 }}
-                className="w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 text-left hover:bg-gray-50 rounded-xl sm:rounded-full transition text-sm sm:text-base"
+                className="w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 text-left hover:bg-gray-50 rounded-xl sm:rounded-full transition-all duration-300 hover-scale"
               >
                 <User size={20} className="text-primary-600 flex-shrink-0" />
                 <span className="flex-1 text-gray-700 font-medium">
@@ -132,7 +145,7 @@ export default function Hero() {
                         setSelectedSpecialist(specialist);
                         setShowSpecialistDropdown(false);
                       }}
-                      className="w-full px-6 py-3 text-left hover:bg-primary-50 transition text-gray-700 first:rounded-t-2xl last:rounded-b-2xl"
+                      className="w-full px-6 py-3 text-left hover:bg-primary-50 transition-all duration-200 hover:translate-x-2 text-gray-700 first:rounded-t-2xl last:rounded-b-2xl"
                     >
                       {specialist}
                     </button>
@@ -147,9 +160,9 @@ export default function Hero() {
                 e.stopPropagation();
                 handleBook();
               }}
-              className="w-full lg:w-auto bg-primary-600 hover:bg-primary-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-full font-semibold transition flex items-center justify-center gap-2 shadow-lg flex-shrink-0 text-sm sm:text-base z-50 relative"
+              className="w-full lg:w-auto bg-primary-600 hover:bg-primary-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-full font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105 flex-shrink-0 text-sm sm:text-base z-50 relative hover-glow animate-pulse-slow"
             >
-              <Calendar size={20} />
+              <Calendar size={20} className="animate-bounce-slow" />
               Book
             </button>
           </div>

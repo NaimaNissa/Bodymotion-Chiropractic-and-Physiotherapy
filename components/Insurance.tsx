@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { HelpCircle, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -136,6 +136,27 @@ const faqs = [
 export default function Insurance() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // Auto-rotate slideshow
   useEffect(() => {
@@ -167,27 +188,27 @@ export default function Insurance() {
   }
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary-800 to-primary-900">
+    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary-800 to-primary-900 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-h2 sm:text-[36px] md:text-[40px] lg:text-[44px] font-normal text-white mb-3 sm:mb-4 px-4">
+        <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-h2 sm:text-[36px] md:text-[40px] lg:text-[44px] font-normal text-white mb-3 sm:mb-4 px-4 text-reveal">
             Your health cover
           </h2>
-          <p className="text-body sm:text-lg text-gray-200 max-w-3xl mx-auto px-4 font-normal">
+          <p className="text-body sm:text-lg text-gray-200 max-w-3xl mx-auto px-4 font-normal slide-up-fade stagger-1">
             We accept all major insurance providers. See our FAQs for booking information.
           </p>
         </div>
 
         {/* Insurance Logos Slideshow */}
-        <div className="mb-12 sm:mb-16 relative">
+        <div className={`mb-12 sm:mb-16 relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <div 
-            className="bg-primary-800 rounded-xl p-8 sm:p-12 md:p-16 overflow-hidden relative"
+            className="bg-primary-800 rounded-xl p-8 sm:p-12 md:p-16 overflow-hidden relative hover-lift glow-pulse"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
             {/* Slides Container */}
             <div
-              className="flex transition-transform duration-500 ease-in-out"
+              className="flex transition-transform duration-700 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
               {slides.map((slide, slideIndex) => (
@@ -199,7 +220,8 @@ export default function Insurance() {
                     {slide.map((provider, index) => (
                       <div
                         key={index}
-                        className="flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity"
+                        className="flex items-center justify-center opacity-90 hover:opacity-100 transition-all duration-300 hover-scale animate-float"
+                        style={{ animationDelay: `${index * 200}ms` }}
                       >
                         {provider.logo}
                       </div>
@@ -214,17 +236,17 @@ export default function Insurance() {
               <>
                 <button
                   onClick={goToPrevious}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all z-10"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all z-10 hover-scale hover-glow ripple"
                   aria-label="Previous slide"
                 >
-                  <ChevronLeft size={24} />
+                  <ChevronLeft size={24} className="animate-pulse-slow" />
                 </button>
                 <button
                   onClick={goToNext}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all z-10"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all z-10 hover-scale hover-glow ripple"
                   aria-label="Next slide"
                 >
-                  <ChevronRight size={24} />
+                  <ChevronRight size={24} className="animate-pulse-slow" />
                 </button>
 
                 {/* Slide Indicators */}
@@ -233,9 +255,9 @@ export default function Insurance() {
                     <button
                       key={index}
                       onClick={() => goToSlide(index)}
-                      className={`h-2 rounded-full transition-all ${
+                      className={`h-2 rounded-full transition-all duration-300 hover-scale ${
                         index === currentSlide
-                          ? "w-8 bg-white"
+                          ? "w-8 bg-white glow-pulse"
                           : "w-2 bg-white/50 hover:bg-white/75"
                       }`}
                       aria-label={`Go to slide ${index + 1}`}
@@ -248,25 +270,26 @@ export default function Insurance() {
         </div>
 
         {/* FAQs */}
-        <div className="max-w-4xl mx-auto">
+        <div className={`max-w-4xl mx-auto transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <details
                 key={index}
-                className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition cursor-pointer"
+                className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-all duration-300 cursor-pointer hover-lift scale-in-on-scroll"
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <summary className="font-semibold text-gray-900 flex items-center gap-2 list-none">
-                  <HelpCircle size={20} className="text-primary-600" />
+                <summary className="font-semibold text-gray-900 flex items-center gap-2 list-none hover:text-primary-600 transition-colors">
+                  <HelpCircle size={20} className="text-primary-600 animate-pulse-slow hover-rotate" />
                   {faq.question}
                 </summary>
-                <p className="mt-4 text-gray-600 pl-7">{faq.answer}</p>
+                <p className="mt-4 text-gray-600 pl-7 slide-up-fade">{faq.answer}</p>
               </details>
             ))}
           </div>
           <div className="text-center mt-8">
             <Link
               href="#"
-              className="text-primary-600 hover:text-primary-700 font-semibold"
+              className="text-primary-600 hover:text-primary-700 font-semibold hover-scale transition-all duration-300 inline-flex items-center gap-2 magnetic-hover"
             >
               Read our FAQs →
             </Link>

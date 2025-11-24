@@ -27,12 +27,12 @@ export default function Navbar() {
   const navText = "text-gray-700";
 
   return (
-    <nav className={`${navBg} fixed top-0 left-0 right-0 z-50 transition-all duration-300`}>
+    <nav className={`${navBg} fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'shadow-lg' : 'shadow-md'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 sm:h-24 md:h-28">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0">
+            <Link href="/" className="flex-shrink-0 hover-scale transition-transform duration-300">
               <Image
                 src="/logo.png"
                 alt="Bodymotion"
@@ -82,22 +82,22 @@ export default function Navbar() {
                 <ChevronDown size={16} />
               </button>
               {showAboutDropdown && (
-                <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-xl py-2 min-w-[200px] z-50">
+                <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-xl py-2 min-w-[200px] z-50 animate-fade-in scale-in-on-scroll visible">
                   <Link
                     href="/about"
-                    className="block px-4 py-2 text-gray-700 hover:bg-primary-50 transition"
+                    className="block px-4 py-2 text-gray-700 hover:bg-primary-50 transition-all duration-200 hover:translate-x-2"
                   >
                     About Us
                   </Link>
                   <Link
                     href="/careers"
-                    className="block px-4 py-2 text-gray-700 hover:bg-primary-50 transition"
+                    className="block px-4 py-2 text-gray-700 hover:bg-primary-50 transition-all duration-200 hover:translate-x-2"
                   >
                     Careers
                   </Link>
                   <Link
                     href="/contact"
-                    className="block px-4 py-2 text-gray-700 hover:bg-primary-50 transition"
+                    className="block px-4 py-2 text-gray-700 hover:bg-primary-50 transition-all duration-200 hover:translate-x-2"
                   >
                     Contact Us
                   </Link>
@@ -117,7 +117,7 @@ export default function Navbar() {
                 </a>
             <Link
               href="/book"
-              className="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition font-medium"
+              className="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-all duration-300 font-medium hover-lift hover-glow animate-pulse-slow"
             >
               Book Now
             </Link>

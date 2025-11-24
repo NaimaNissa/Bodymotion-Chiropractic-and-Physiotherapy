@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import { Search, ClipboardCheck, Target, Shield } from "lucide-react";
 
 const steps = [
@@ -32,14 +35,38 @@ const steps = [
 ];
 
 export default function Process() {
+  const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = entry.target.getAttribute('data-index');
+            if (index !== null) {
+              setVisibleItems((prev) => new Set([...prev, parseInt(index)]));
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = sectionRef.current?.querySelectorAll('[data-index]');
+    elements?.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary-700 to-primary-800">
+    <section ref={sectionRef} id="about" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary-700 to-primary-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-h2 sm:text-[36px] md:text-[40px] lg:text-[44px] font-normal text-white mb-3 sm:mb-4 px-4">
+        <div className="text-center mb-12 sm:mb-16 fade-in-on-scroll visible">
+          <h2 className="text-h2 sm:text-[36px] md:text-[40px] lg:text-[44px] font-normal text-white mb-3 sm:mb-4 px-4 text-reveal">
             Your path to better health
           </h2>
-          <p className="text-body sm:text-lg text-gray-200 max-w-3xl mx-auto px-4 font-normal">
+          <p className="text-body sm:text-lg text-gray-200 max-w-3xl mx-auto px-4 font-normal slide-up-fade stagger-1">
             Our multidisciplinary approach ensures comprehensive care. We treat everyone with the same level of expertise and attention, helping you achieve your health goals.
           </p>
         </div>
@@ -55,13 +82,16 @@ export default function Process() {
             ];
             const colors = colorVariations[index % colorVariations.length];
             
+            const isVisible = visibleItems.has(index);
             return (
               <div
                 key={index}
-                className={`${colors.bg} rounded-xl p-6 border-2 ${colors.border} hover:shadow-xl transition-all duration-300`}
+                data-index={index}
+                className={`${colors.bg} rounded-xl p-6 border-2 ${colors.border} hover:shadow-xl transition-all duration-500 hover-lift scale-in-on-scroll ${isVisible ? 'visible' : ''}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="mb-4">
-                  <div className={`w-14 h-14 ${colors.icon} rounded-lg flex items-center justify-center mb-4`}>
+                  <div className={`w-14 h-14 ${colors.icon} rounded-lg flex items-center justify-center mb-4 hover-scale hover-rotate transition-all duration-300 animate-pulse-slow`}>
                     <Icon size={28} />
                   </div>
                 </div>
